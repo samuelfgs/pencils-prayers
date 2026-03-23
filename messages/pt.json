@@ -1,0 +1,65 @@
+{
+  "Navbar": {
+    "home": "Início",
+    "about": "Sobre",
+    "journal": "Diário",
+    "contact": "Contato"
+  },
+  "Hero": {
+    "title": "Nutrindo Corações e Mentes",
+    "subtitle": "Um espaço iluminado para mães encontrarem inspiração criativa para o homeschool e encorajamento cristão enraizado. Fundado por Bruna & Vitória.",
+    "cta_journal": "Explorar o Diário",
+    "cta_moms": "Conheça as Mães"
+  },
+  "Posts": {
+    "category_rhythms": "Ritmos",
+    "category_creativity": "Criatividade",
+    "category_nature": "Natureza",
+    "category_faith": "Fé",
+    "read_more": "Ler Mais",
+    "author": "Por {name}",
+    "easter_title": "O Túmulo Vazio: Uma Páscoa Enraizada no Coração para Mãos Pequenas",
+    "easter_excerpt": "Focando no verdadeiro significado da época com tradições familiares simples e atividades criativas que apontam de volta para Cristo.",
+    "easter_author": "Bruna & Vitória",
+    "welcome_title": "Bem-vinda ao Pencils & Prayers",
+    "welcome_excerpt": "Um espaço iluminado para mães encontrarem inspiração criativa para o homeschool e encorajamento cristão enraizado. Fundado por Bruna & Vitória.",
+    "welcome_author": "Bruna & Vitória",
+    "welcome_category": "Sobre Nós"
+  },
+  "About": {
+    "story": "Nossa história",
+    "title": "Sobre Nós",
+    "vitoria_bio": "Oi, eu sou a Vitória! Sou uma ex-educadora que se tornou mãe que educa em casa de três filhos. Minha paixão está em criar ritmos estruturados, porém flexíveis, que permitem às crianças explorar suas curiosidades enquanto permanecem fundamentadas na Palavra de Deus.",
+    "vitoria_extra": "Quando não estou planejando nosso próximo estudo de unidade, você pode me encontrar no jardim ou com uma xícara de chá earl grey e uma boa biografia.",
+    "bruna_bio": "Olá! Eu sou a Bruna. Sempre acreditei que arte e fé estão profundamente entrelaçadas. Como mãe de dois, foco em trazer criatividade para cada aspecto de nossa jornada de ensino em casa — de diários de natureza em aquarela a trabalhos de memória musical.",
+    "bruna_extra": "Amo explorar trilhas locais com minha família e encontrar beleza nos pequenos momentos cotidianos que nos apontam de volta ao nosso Criador.",
+    "vision_title": "Nossa Visão",
+    "vision_text": "Pencils & Prayers nasceu de um desejo compartilhado de apoiar outras mães em suas jornadas de ensino em casa. Acreditamos que a educação não é apenas sobre livros didáticos, mas sobre nutrir o coração e a alma de cada criança através de uma lente de fé, criatividade e intencionalidade.",
+    "sign_off": "Com graça e liberdade, {names}",
+    "follow_instagram": "Siga a {name} no Instagram"
+  },
+  "Contact": {
+    "title": "Entre em Contato",
+    "intro": "Tem alguma pergunta sobre homeschooling, maternidade ou quer apenas compartilhar uma palavra de encorajamento? Adoraríamos ouvir de você. Preencha o formulário abaixo e responderemos o mais rápido possível.",
+    "label_name": "Nome",
+    "label_email": "Endereço de E-mail",
+    "label_message": "Mensagem",
+    "placeholder_name": "Seu nome completo",
+    "placeholder_email": "exemplo@email.com",
+    "placeholder_message": "Conte-nos o que está em seu coração...",
+    "btn_send": "Enviar Mensagem",
+    "other_ways": "Outras Formas de Conectar"
+  },
+  "Footer": {
+    "verse": "\"Educa a criança no caminho em que deve andar; e até quando envelhecer não se desviará dele.\"",
+    "tagline": "Educando com Fé & Liberdade",
+    "with_love": "Com carinho, {names}"
+  },
+  "Newsletter": {
+    "join_community": "Junte-se à nossa comunidade",
+    "title": "Ilumine sua Caixa de Entrada",
+    "text": "Materiais para imprimir semanais, lições criativas e encorajamento cheio de graça para sua jornada materna.",
+    "placeholder": "Endereço de e-mail...",
+    "btn": "Junte-se a Nós"
+  }
+}

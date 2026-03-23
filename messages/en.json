@@ -1,0 +1,65 @@
+{
+  "Navbar": {
+    "home": "Home",
+    "about": "About",
+    "journal": "Journal",
+    "contact": "Contact"
+  },
+  "Hero": {
+    "title": "Nurturing Hearts and Heads",
+    "subtitle": "A bright space for moms to find creative homeschool inspiration and rooted Christian encouragement. Founded by Bruna & Vitoria.",
+    "cta_journal": "Explore the Journal",
+    "cta_moms": "Meet the Moms"
+  },
+  "Posts": {
+    "category_rhythms": "Rhythms",
+    "category_creativity": "Creativity",
+    "category_nature": "Nature",
+    "category_faith": "Faith",
+    "read_more": "Read More",
+    "author": "By {name}",
+    "easter_title": "The Empty Tomb: A Heart-Rooted Easter for Little Hands",
+    "easter_excerpt": "Focusing on the true meaning of the season with simple family traditions and creative activities that point back to Christ.",
+    "easter_author": "Bruna & Vitoria",
+    "welcome_title": "Welcome to Pencils & Prayers",
+    "welcome_excerpt": "A bright space for moms to find creative homeschool inspiration and rooted Christian encouragement. Founded by Bruna & Vitoria.",
+    "welcome_author": "Bruna & Vitoria",
+    "welcome_category": "About Us"
+  },
+  "About": {
+    "story": "Our story",
+    "title": "About Us",
+    "vitoria_bio": "Hi, I'm Vitoria! I'm a former educator turned homeschooling mom of three. My passion lies in creating structured yet flexible rhythms that allow children to explore their curiosities while staying grounded in the Word of God.",
+    "vitoria_extra": "When I'm not planning our next unit study, you can find me in the garden or with a cup of earl grey tea and a good biography.",
+    "bruna_bio": "Hello! I'm Bruna. I've always believed that art and faith are deeply intertwined. As a mother of two, I focus on bringing creativity into every aspect of our homeschool journey—from watercolor nature journals to musical memory work.",
+    "bruna_extra": "I love exploring local trails with my family and finding beauty in the small, everyday moments that point us back to our Creator.",
+    "vision_title": "Our Vision",
+    "vision_text": "Pencils & Prayers was born out of a shared desire to support other mothers in their homeschooling journeys. We believe that education is not just about textbooks, but about nurturing the heart and soul of each child through a lens of faith, creativity, and intentionality.",
+    "sign_off": "With grace and freedom, {names}",
+    "follow_instagram": "Follow {name} on Instagram"
+  },
+  "Contact": {
+    "title": "Get in Touch",
+    "intro": "Have a question about homeschooling, motherhood, or just want to share a word of encouragement? We'd love to hear from you. Fill out the form below and we'll get back to you as soon as we can.",
+    "label_name": "Name",
+    "label_email": "Email Address",
+    "label_message": "Message",
+    "placeholder_name": "Your full name",
+    "placeholder_email": "example@email.com",
+    "placeholder_message": "Tell us what's on your heart...",
+    "btn_send": "Send Message",
+    "other_ways": "Other Ways to Connect"
+  },
+  "Footer": {
+    "verse": "\"Direct your children onto the right path, and when they are older, they will not leave it.\"",
+    "tagline": "Educating with Faith & Freedom",
+    "with_love": "With love, {names}"
+  },
+  "Newsletter": {
+    "join_community": "Join our community",
+    "title": "Brighten Your Inbox",
+    "text": "Weekly printables, creative lessons, and grace-filled encouragement for your motherhood journey.",
+    "placeholder": "Email address...",
+    "btn": "Join Us"
+  }
+}
