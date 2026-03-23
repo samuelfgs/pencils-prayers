@@ -41,7 +41,7 @@ export default function Home() {
         <div className="space-y-24">
           {posts.map((post, index) => (
             <article key={`${post.id}-${index}`} className="group animate-in fade-in slide-in-from-bottom-4 duration-1000">
-              <div className="flex flex-col">
+              <div className="flex flex-col items-center text-center">
                 <div className="flex items-center gap-4 mb-6">
                   <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-secondary bg-secondary/10 px-3 py-1 rounded-full">
                     {post.category}
@@ -49,25 +49,42 @@ export default function Home() {
                 </div>
 
                 <Link href={post.id === 'welcome' ? `/${locale}/about` : `/${locale}/posts/${post.id}`}>
-                  <h2 className="text-3xl md:text-5xl font-serif leading-tight mb-8 hover:text-secondary transition-colors duration-500">
+                  <h2 className="text-3xl md:text-5xl font-serif leading-tight mb-8 hover:text-secondary transition-colors duration-500 max-w-xl">
                     {post.title}
                   </h2>
                 </Link>
 
-                <div className="aspect-[16/10] overflow-hidden rounded-[2.5rem] mb-10 shadow-sm transition-transform duration-700 group-hover:scale-[1.01] group-hover:shadow-md">
-                  <img 
-                    src={post.image} 
-                    alt={post.title} 
-                    className="object-cover w-full h-full"
-                  />
-                </div>
+                <Link href={post.id === 'welcome' ? `/${locale}/about` : `/${locale}/posts/${post.id}`} className="w-full">
+                  <div className="aspect-[16/10] overflow-hidden rounded-[2.5rem] mb-10 shadow-sm transition-transform duration-700 group-hover:scale-[1.01] group-hover:shadow-md cursor-pointer">
+                    <img 
+                      src={post.image} 
+                      alt={post.title} 
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                </Link>
 
-                <div className="px-2">
-                  <p className="text-lg text-muted-foreground leading-relaxed font-sans mb-8 italic">
+                <div className="px-2 flex flex-col items-center">
+                  <p className="text-lg text-muted-foreground leading-relaxed font-sans mb-4 italic max-w-xl">
                     {post.excerpt}
                   </p>
                   
-                  <div className="flex items-center justify-between pt-6 border-t border-primary/10">
+                  <Link 
+                    href={post.id === 'welcome' ? `/${locale}/about` : `/${locale}/posts/${post.id}`}
+                    className="inline-flex items-center text-[10px] uppercase tracking-[0.2em] font-bold text-secondary hover:text-secondary/80 transition-colors mb-8 group/link"
+                  >
+                    {tPosts('read_more')}
+                    <svg 
+                      className="ml-2 w-3 h-3 transition-transform duration-300 group-hover/link:translate-x-1" 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Link>
+                  
+                  <div className="w-full flex items-center justify-center pt-6 border-t border-primary/10">
                     <div className="flex items-center gap-4">
                       <div className="flex flex-col">
                         <span className="text-[10px] uppercase tracking-widest font-bold text-foreground/60">{tPosts('author', { name: post.author })}</span>
