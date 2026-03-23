@@ -29,7 +29,7 @@ export default function Home() {
       title: tPosts('easter_title'),
       excerpt: tPosts('easter_excerpt'),
       author: tPosts('easter_author'),
-      image: "https://images.unsplash.com/photo-1553969420-fb915228af51?auto=format&fit=crop&q=80&w=1200",
+      image: "/easter.png",
       category: tPosts('category_faith'),
       likes: 89,
       readingTime: locale === 'en' ? "8 min read" : "8 min de leitura"
@@ -51,7 +51,7 @@ export default function Home() {
                   </span>
                 </div>
 
-                <Link href={`/${locale}/posts/${post.id}`}>
+                <Link href={post.id === 'welcome' ? `/${locale}/about` : `/${locale}/posts/${post.id}`}>
                   <h2 className="text-3xl md:text-5xl font-serif leading-tight mb-8 hover:text-primary transition-colors duration-500">
                     {post.title}
                   </h2>

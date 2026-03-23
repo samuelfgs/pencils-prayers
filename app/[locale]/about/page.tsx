@@ -11,9 +11,8 @@ export default function About() {
       <Navbar />
       
       <main className="flex-1 w-full max-w-5xl mx-auto px-6 py-12 md:py-20">
-        <header className="text-center mb-24">
-          <span className="font-script text-4xl text-secondary mb-4 block">{t('story')}</span>
-          <h1 className="text-5xl md:text-7xl font-serif text-foreground/90 mb-8 tracking-tight">{t('title')}</h1>
+        <header className="text-center mb-16 md:mb-24">
+          <h1 className="text-5xl md:text-7xl font-serif text-secondary tracking-tight">{t('title')}</h1>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-start mb-32">
@@ -48,9 +47,9 @@ export default function About() {
           {/* Vitoria */}
           <section className="flex flex-col gap-8 md:mt-32 group">
             <div className="aspect-[4/5] overflow-hidden rounded-[3rem] shadow-sm transition-transform duration-700 group-hover:scale-[1.02]">
-              <img 
-                src="https://images.unsplash.com/photo-1544717302-425aa69a4039?auto=format&fit=crop&q=80&w=800" 
-                alt="Vitoria" 
+              <img
+                src="https://images.unsplash.com/photo-1589156280159-27698a70f29e?auto=format&fit=crop&q=80&w=800"
+                alt="Vitoria"
                 className="object-cover w-full h-full"
               />
             </div>

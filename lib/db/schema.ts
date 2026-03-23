@@ -37,7 +37,9 @@ export const posts = pgTable("posts", {
 export const comments = pgTable("comments", {
   id: uuid("id").defaultRandom().primaryKey(),
   postId: uuid("post_id").references(() => posts.id).notNull(),
-  userId: uuid("user_id").references(() => profiles.id).notNull(),
+  userId: uuid("user_id").references(() => profiles.id), // Nullable for guests
+  guestName: varchar("guest_name", { length: 255 }), // Added for guest names
+  sessionId: varchar("session_id", { length: 255 }), // Track session for guest comments
   content: text("content").notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
@@ -49,12 +51,14 @@ export const comments = pgTable("comments", {
 export const likes = pgTable("likes", {
   id: uuid("id").defaultRandom().primaryKey(),
   postId: uuid("post_id").references(() => posts.id).notNull(),
-  userId: uuid("user_id").references(() => profiles.id).notNull(),
+  userId: uuid("user_id").references(() => profiles.id), // Nullable for guests
+  sessionId: varchar("session_id", { length: 255 }), // Track guest likes
   createdAt: timestamp("created_at").notNull().defaultNow(),
 }, (table) => ({
   postIdIdx: index("idx_likes_post_id").on(table.postId),
   userIdIdx: index("idx_likes_user_id").on(table.userId),
-  uniqueLike: index("idx_likes_unique").on(table.postId, table.userId),
+  // Updated to allow unique likes per session OR user
+  uniqueLikeSession: index("idx_likes_session_unique").on(table.postId, table.sessionId),
 }));
 
 export type Profile = typeof profiles.$inferSelect;
