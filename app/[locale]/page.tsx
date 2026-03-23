@@ -49,7 +49,7 @@ export default function Home() {
                 </div>
 
                 <Link href={post.id === 'welcome' ? `/${locale}/about` : `/${locale}/posts/${post.id}`}>
-                  <h2 className="text-3xl md:text-5xl font-serif leading-tight mb-8 hover:text-primary transition-colors duration-500">
+                  <h2 className="text-3xl md:text-5xl font-serif leading-tight mb-8 hover:text-secondary transition-colors duration-500">
                     {post.title}
                   </h2>
                 </Link>

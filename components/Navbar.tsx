@@ -17,6 +17,13 @@ export default function Navbar() {
     return segments.join('/');
   };
 
+  const isActive = (path: string) => {
+    if (!pathname) return false;
+    // Handle home page exactly, others by prefix
+    if (path === `/${locale}`) return pathname === `/${locale}`;
+    return pathname === path || pathname.startsWith(`${path}/`);
+  };
+
   return (
     <header className="w-full pt-10 pb-6 bg-[#FDFCFB]">
       <div className="max-w-4xl mx-auto px-6 flex flex-col items-center">
@@ -58,9 +65,24 @@ export default function Navbar() {
 
         {/* Navigation - Soft and Rounded */}
         <nav className="flex justify-center items-center gap-8 md:gap-12 py-3 px-10 bg-white/50 border border-primary/10 rounded-full shadow-sm text-[10px] uppercase tracking-[0.2em] font-bold text-muted-foreground/80">
-          <Link href={`/${locale}`} className="hover:text-primary transition-colors">{tNavbar('home')}</Link>
-          <Link href={`/${locale}/about`} className="hover:text-primary transition-colors">{tNavbar('about')}</Link>
-          <Link href={`/${locale}/contact`} className="hover:text-primary transition-colors">{tNavbar('contact')}</Link>
+          <Link 
+            href={`/${locale}`} 
+            className={`transition-colors ${isActive(`/${locale}`) ? 'text-secondary' : 'hover:text-secondary'}`}
+          >
+            {tNavbar('home')}
+          </Link>
+          <Link 
+            href={`/${locale}/about`} 
+            className={`transition-colors ${isActive(`/${locale}/about`) ? 'text-secondary' : 'hover:text-secondary'}`}
+          >
+            {tNavbar('about')}
+          </Link>
+          <Link 
+            href={`/${locale}/contact`} 
+            className={`transition-colors ${isActive(`/${locale}/contact`) ? 'text-secondary' : 'hover:text-secondary'}`}
+          >
+            {tNavbar('contact')}
+          </Link>
         </nav>
       </div>
     </header>
