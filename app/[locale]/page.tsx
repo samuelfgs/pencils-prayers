@@ -2,7 +2,6 @@
 
 import Navbar from "@/components/Navbar";
 import Link from "next/link";
-import { Heart, Share2, Bookmark } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 import NewsletterSignup from "@/components/NewsletterSignup";
 
@@ -74,12 +73,6 @@ export default function Home() {
                         <span className="text-[10px] uppercase tracking-widest font-bold text-foreground/60">{tPosts('author', { name: post.author })}</span>
                         {post.readingTime && <span className="text-[9px] uppercase tracking-widest text-muted-foreground/50">{post.readingTime}</span>}
                       </div>
-                    </div>
-                    
-                    <div className="flex gap-6 text-muted-foreground/40">
-                       <button className="hover:text-secondary transition-colors"><Heart className="w-5 h-5" /></button>
-                       <button className="hover:text-secondary transition-colors"><Bookmark className="w-5 h-5" /></button>
-                       <button className="hover:text-secondary transition-colors"><Share2 className="w-5 h-5" /></button>
                     </div>
                   </div>
                 </div>

@@ -30,8 +30,7 @@ app/                # Next.js App Router
 components/         # React Components
 │   └── ui/         # Reusable UI Components
 lib/                # Logic and Config
-│   ├── db/         # Drizzle Schema & Migrations
-│   └── supabase/   # Supabase client/server/middleware
+│   └── db/         # Drizzle Schema & Migrations
 hooks/              # Custom React Hooks
 public/             # Static Assets
 ```

@@ -1,5 +1,4 @@
 import createMiddleware from 'next-intl/middleware';
-import { updateSession } from './lib/supabase/middleware';
 import { NextRequest } from 'next/server';
 
 const intlMiddleware = createMiddleware({
@@ -11,11 +10,8 @@ const intlMiddleware = createMiddleware({
 });
 
 export default async function middleware(request: NextRequest) {
-  // First, run the next-intl middleware to handle locale redirection and response creation
-  const response = intlMiddleware(request);
-  
-  // Then, update the session with Supabase, passing the response from next-intl
-  return await updateSession(request, response);
+  // Run the next-intl middleware to handle locale redirection and response creation
+  return intlMiddleware(request);
 }
 
 export const config = {
