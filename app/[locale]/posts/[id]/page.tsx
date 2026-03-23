@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
-import { Button } from "@/components/ui/button";
-import { Heart, Share2, Bookmark } from "lucide-react";
+import { Heart } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
