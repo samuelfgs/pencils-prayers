@@ -5,6 +5,7 @@ import { EB_Garamond, Montserrat, Dancing_Script } from "next/font/google";
 import "../globals.css";
 import { Suspense } from "react";
 import QueryProvider from "@/components/QueryProvider";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const ebGaramond = EB_Garamond({
   variable: "--font-eb-garamond",
@@ -54,6 +55,7 @@ export default async function RootLayout({
             </NextIntlClientProvider>
           </QueryProvider>
         </Suspense>
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
       </body>
     </html>
   );
