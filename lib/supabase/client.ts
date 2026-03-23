@@ -5,9 +5,8 @@ export function createClient() {
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!url || !key) {
-    // Return a dummy client or null during build if env vars are missing
-    // In production/runtime, these should be present
-    return null as any;
+    // Return null during build if env vars are missing
+    return null;
   }
 
   return createBrowserClient(url, key);

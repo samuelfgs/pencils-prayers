@@ -1,15 +1,13 @@
 'use client';
 
 import Navbar from "@/components/Navbar";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Heart, Share2, Bookmark } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 export default function Home() {
-  const tHero = useTranslations('Hero');
   const tPosts = useTranslations('Posts');
-  const tNewsletter = useTranslations('Newsletter');
   const tFooter = useTranslations('Footer');
   const locale = useLocale();
 
@@ -90,24 +88,7 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Newsletter Signup Integration - Gentler Version */}
-        <section className="mt-32 bg-white/50 border border-primary/10 rounded-[3rem] p-10 md:p-16 text-center mb-24 shadow-sm">
-          <span className="font-script text-3xl text-secondary mb-4 block">
-            {tNewsletter('join_community')}
-          </span>
-          <h3 className="text-3xl font-serif mb-6">{tNewsletter('title')}</h3>
-          <p className="text-sm text-muted-foreground mb-10 max-w-md mx-auto">{tNewsletter('text')}</p>
-          <div className="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto">
-            <input 
-              type="email" 
-              placeholder={tNewsletter('placeholder')} 
-              className="flex-1 px-6 py-4 rounded-full bg-white border border-primary/10 text-sm focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all"
-            />
-            <Button className="rounded-full bg-primary hover:bg-primary/90 text-white px-8 py-6 h-auto">
-              {tNewsletter('btn')}
-            </Button>
-          </div>
-        </section>
+        <NewsletterSignup />
 
         {/* Editorial Note */}
         <footer className="text-center py-12 border-t border-primary/10">

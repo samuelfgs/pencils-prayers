@@ -1,14 +1,15 @@
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Heart, Share2, Bookmark } from "lucide-react";
-import { useTranslations, useLocale } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import { ArticleActionsWrapper, ActionsSkeleton } from "@/components/ArticleActionsWrapper";
 import { CommentsWrapper, CommentsSkeleton } from "@/components/CommentsWrapper";
 import { Suspense } from "react";
 import { cookies } from 'next/headers';
+
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 export default async function PostPage({
   params
@@ -24,14 +25,8 @@ export default async function PostPage({
   const cookieStore = await cookies();
   const currentSessionId = cookieStore.get("guest_session_id")?.value || null;
 
-  // To use translations in a server component, we fetch messages
-  const messages = await getMessages();
-  // @ts-ignore
-  const tPosts = (key: string) => messages?.Posts?.[key] || key;
-  // @ts-ignore
-  const tFooter = (key: string) => messages?.Footer?.[key] || key;
-  // @ts-ignore
-  const tNewsletter = (key: string) => messages?.Newsletter?.[key] || key;
+  const tPosts = await getTranslations('Posts');
+  const tFooter = await getTranslations('Footer');
 
   return (
     <div className="flex flex-col min-h-screen bg-[#FDFCFB] text-[#2C2C2C]">
@@ -131,26 +126,7 @@ export default async function PostPage({
           </Suspense>
         </article>
 
-        {/* Newsletter Signup Integration */}
-        <section className="mt-32 bg-white/50 border border-primary/10 rounded-[3rem] p-10 md:p-16 text-center mb-24 shadow-sm">
-          <span className="font-script text-3xl text-secondary mb-4 block">
-            {tNewsletter("join_community")}
-          </span>
-          <h3 className="text-3xl font-serif mb-6">{tNewsletter("title")}</h3>
-          <p className="text-sm text-muted-foreground mb-10 max-w-md mx-auto">
-            {tNewsletter("text")}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto">
-            <input
-              type="email"
-              placeholder={tNewsletter("placeholder")}
-              className="flex-1 px-6 py-4 rounded-full bg-white border border-primary/10 text-sm focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all"
-            />
-            <Button className="rounded-full bg-primary hover:bg-primary/90 text-white px-8 py-6 h-auto">
-              {tNewsletter("btn")}
-            </Button>
-          </div>
-        </section>
+        <NewsletterSignup />
 
         {/* Editorial Note */}
         <footer className="text-center py-12 border-t border-primary/10">

@@ -15,13 +15,15 @@ const client = connectionString ? postgres(connectionString, {
   max: 1, 
 }) : null;
 
-export const db = client ? drizzle(client, { schema }) : new Proxy({} as any, {
-  get(_, prop) {
-    const errorMsg = `Database connection failed: DATABASE_URL is missing or invalid. Attempted to access: ${String(prop)}`;
-    console.error(errorMsg);
-    throw new Error(errorMsg);
-  }
-});
+export const db = (client
+  ? drizzle(client, { schema })
+  : new Proxy({} as object, {
+      get(_, prop) {
+        const errorMsg = `Database connection failed: DATABASE_URL is missing or invalid. Attempted to access: ${String(prop)}`;
+        console.error(errorMsg);
+        throw new Error(errorMsg);
+      },
+    })) as ReturnType<typeof drizzle<typeof schema>>;
 
 export { schema };
 export * from "./schema";

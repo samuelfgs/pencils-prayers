@@ -61,6 +61,12 @@ export const likes = pgTable("likes", {
   uniqueLikeSession: index("idx_likes_session_unique").on(table.postId, table.sessionId),
 }));
 
+export const newsletterSubscriptions = pgTable("newsletter_subscriptions", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  email: varchar("email", { length: 255 }).notNull().unique(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
 export type Profile = typeof profiles.$inferSelect;
 export type NewProfile = typeof profiles.$inferInsert;
 export type Post = typeof posts.$inferSelect;
@@ -69,3 +75,5 @@ export type Comment = typeof comments.$inferSelect;
 export type NewComment = typeof comments.$inferInsert;
 export type Like = typeof likes.$inferSelect;
 export type NewLike = typeof likes.$inferInsert;
+export type NewsletterSubscription = typeof newsletterSubscriptions.$inferSelect;
+export type NewNewsletterSubscription = typeof newsletterSubscriptions.$inferInsert;
