@@ -31,7 +31,7 @@ export default function NewsletterSignup() {
   };
 
   return (
-    <section className="mt-32 bg-white/50 border border-primary/10 rounded-[3rem] p-10 md:p-16 text-center mb-24 shadow-sm">
+    <section className="bg-white/50 border border-primary/10 rounded-[3rem] p-8 md:p-12 text-center shadow-sm">
       <span className="font-script text-3xl text-secondary mb-4 block">
         {tNewsletter("join_community")}
       </span>
@@ -41,20 +41,20 @@ export default function NewsletterSignup() {
       </p>
       
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-sm mx-auto">
-        <div className="flex flex-col sm:flex-row gap-3">
+        <div className="flex flex-col gap-3">
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={tNewsletter("placeholder")}
-            className="flex-1 px-6 py-4 rounded-full bg-white border border-primary/10 text-sm focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all placeholder:text-muted-foreground/40"
+            className="w-full px-6 py-4 rounded-full bg-white border border-primary/10 text-sm text-center focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all placeholder:text-muted-foreground/40"
             required
             disabled={isPending}
           />
           <Button 
             type="submit"
             disabled={isPending}
-            className="rounded-full bg-primary hover:bg-primary/90 text-white px-8 py-6 h-auto transition-all disabled:opacity-50"
+            className="w-full rounded-full bg-primary hover:bg-primary/90 text-white px-8 py-6 h-auto transition-all disabled:opacity-50"
           >
             {isPending ? "..." : tNewsletter("btn")}
           </Button>

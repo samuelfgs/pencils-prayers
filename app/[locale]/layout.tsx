@@ -6,6 +6,7 @@ import "../globals.css";
 import { Suspense } from "react";
 import QueryProvider from "@/components/QueryProvider";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import ComingSoon from "@/components/ComingSoon";
 
 const ebGaramond = EB_Garamond({
   variable: "--font-eb-garamond",
@@ -36,6 +37,7 @@ export default async function RootLayout({
 }) {
   const { locale } = await params;
   const messages = await getMessages();
+  const isSiteEnabled = process.env.NEXT_PUBLIC_SITE_ENABLED === 'true';
 
   return (
     <html lang={locale}>
@@ -49,9 +51,13 @@ export default async function RootLayout({
         }>
           <QueryProvider>
             <NextIntlClientProvider messages={messages}>
-              <div className="min-h-screen flex flex-col">
-                {children}
-              </div>
+              {isSiteEnabled ? (
+                <div className="min-h-screen flex flex-col">
+                  {children}
+                </div>
+              ) : (
+                <ComingSoon />
+              )}
             </NextIntlClientProvider>
           </QueryProvider>
         </Suspense>
