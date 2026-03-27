@@ -1,106 +1,101 @@
 'use client';
 
 import Navbar from "@/components/Navbar";
-import Link from "next/link";
-import { useTranslations, useLocale } from "next-intl";
 import NewsletterSignup from "@/components/NewsletterSignup";
+import Image from "next/image";
+import { Download } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+
+const homeContent = {
+  en: {
+    category: "Featured Download",
+    title: "Easter Advent",
+    intro:
+      "A gentle collection created to help families walk toward Easter with intention. These pages invite you into daily reflection, simple rhythms, and Christ-centered moments that keep the hope of the resurrection close at hand.",
+    buttons: [
+      { href: "/easter-advent.pdf", label: "Download Full PDF" },
+      { href: "/easter-advent-en.pdf", label: "Download English Version" },
+      { href: "/easter-advent-pt.pdf", label: "Download Portuguese Version" },
+    ],
+  },
+  pt: {
+    category: "Destaque",
+    title: "Advento de Páscoa",
+    intro:
+      "Uma coleção delicada para ajudar as famílias a caminharem até a Páscoa com intencionalidade. Estas páginas convidam você para reflexões diárias, ritmos simples e momentos centrados em Cristo, mantendo viva a esperança da ressurreição.",
+    buttons: [
+      { href: "/easter-advent-en.pdf", label: "Baixar Versão em Inglês" },
+      { href: "/easter-advent-pt.pdf", label: "Baixar Versão em Português" },
+      { href: "/easter-advent.pdf", label: "Baixar PDF Completo" },
+    ],
+  },
+} as const;
 
 export default function Home() {
-  const tPosts = useTranslations('Posts');
   const tFooter = useTranslations('Footer');
-  const locale = useLocale();
-
-  const posts = [
-    {
-      id: "welcome",
-      title: tPosts('welcome_title'),
-      excerpt: tPosts('welcome_excerpt'),
-      author: tPosts('welcome_author'),
-      image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&q=80&w=1200",
-      category: tPosts('welcome_category'),
-      likes: 124,
-      isAbout: true
-    },
-    {
-      id: "easter-2026",
-      title: tPosts('easter_title'),
-      excerpt: tPosts('easter_excerpt'),
-      author: tPosts('easter_author'),
-      image: "/easter.png",
-      category: tPosts('category_faith'),
-      likes: 89,
-      readingTime: locale === 'en' ? "8 min read" : "8 min de leitura"
-    }
-  ];
+  const locale = useLocale() as keyof typeof homeContent;
+  const content = homeContent[locale] ?? homeContent.en;
 
   return (
     <div className="flex flex-col min-h-screen bg-[#FDFCFB] text-[#2C2C2C]">
       <Navbar />
 
       <main className="flex-1 w-full max-w-2xl mx-auto px-6 py-12">
-        <div className="space-y-24">
-          {posts.map((post, index) => (
-            <article key={`${post.id}-${index}`} className="group animate-in fade-in slide-in-from-bottom-4 duration-1000">
-              <div className="flex flex-col items-center text-center">
-                <div className="flex items-center gap-4 mb-6">
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-secondary bg-secondary/10 px-3 py-1 rounded-full">
-                    {post.category}
-                  </span>
-                </div>
+        <article className="group animate-in fade-in slide-in-from-bottom-4 duration-1000">
+          <div className="flex flex-col items-center text-center">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-secondary bg-secondary/10 px-3 py-1 rounded-full">
+                {content.category}
+              </span>
+            </div>
 
-                <Link href={post.id === 'welcome' ? `/${locale}/about` : `/${locale}/posts/${post.id}`}>
-                  <h2 className="text-3xl md:text-5xl font-serif leading-tight mb-8 hover:text-secondary transition-colors duration-500 max-w-xl">
-                    {post.title}
-                  </h2>
-                </Link>
+            <h1 className="text-3xl md:text-5xl font-serif leading-tight mb-8 max-w-xl">
+              {content.title}
+            </h1>
 
-                <Link href={post.id === 'welcome' ? `/${locale}/about` : `/${locale}/posts/${post.id}`} className="w-full">
-                  <div className="aspect-[16/10] overflow-hidden rounded-[2.5rem] mb-10 shadow-sm transition-transform duration-700 group-hover:scale-[1.01] group-hover:shadow-md cursor-pointer">
-                    <img 
-                      src={post.image} 
-                      alt={post.title} 
-                      className="object-cover w-full h-full"
-                    />
-                  </div>
-                </Link>
+            <div className="aspect-[16/10] overflow-hidden rounded-[2.5rem] mb-10 shadow-sm w-full">
+              <Image
+                src="/easter.png"
+                alt={content.title}
+                width={1200}
+                height={750}
+                className="object-cover w-full h-full"
+              />
+            </div>
 
-                <div className="px-2 flex flex-col items-center">
-                  <p className="text-lg text-muted-foreground leading-relaxed font-sans mb-4 italic max-w-xl">
-                    {post.excerpt}
-                  </p>
-                  
-                  <Link 
-                    href={post.id === 'welcome' ? `/${locale}/about` : `/${locale}/posts/${post.id}`}
-                    className="inline-flex items-center text-[10px] uppercase tracking-[0.2em] font-bold text-secondary hover:text-secondary/80 transition-colors mb-8 group/link"
+            <div className="px-2 flex flex-col items-center">
+              <p className="text-lg text-muted-foreground leading-relaxed font-sans mb-10 italic max-w-xl">
+                {content.intro}
+              </p>
+
+              <div className="w-full flex flex-col gap-4 max-w-md mb-10">
+                {content.buttons.map((button) => (
+                  <a
+                    key={button.href}
+                    href={button.href}
+                    download
+                    className="inline-flex w-full items-center justify-center gap-3 rounded-full border border-secondary/20 bg-white px-6 py-3 text-[10px] uppercase tracking-[0.2em] font-bold text-secondary transition-all duration-300 hover:-translate-y-0.5 hover:border-secondary/40 hover:bg-secondary hover:text-white"
                   >
-                    {tPosts('read_more')}
-                    <svg 
-                      className="ml-2 w-3 h-3 transition-transform duration-300 group-hover/link:translate-x-1" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </Link>
-                  
-                  <div className="w-full flex items-center justify-center pt-6 border-t border-primary/10">
-                    <div className="flex items-center gap-4">
-                      <div className="flex flex-col">
-                        <span className="text-[10px] uppercase tracking-widest font-bold text-foreground/60">{tPosts('author', { name: post.author })}</span>
-                        {post.readingTime && <span className="text-[9px] uppercase tracking-widest text-muted-foreground/50">{post.readingTime}</span>}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                    <Download className="h-4 w-4 shrink-0" />
+                    {button.label}
+                  </a>
+                ))}
               </div>
-            </article>
-          ))}
+
+              <div className="w-full flex flex-col items-center">
+                <span className="text-[10px] uppercase tracking-widest font-bold text-foreground/60 mb-6">
+                  {locale === 'en' ? 'By Bruna & Vitoria' : 'Por Bruna & Vitória'}
+                </span>
+                <div className="w-full border-t border-primary/10" />
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div className="mt-12">
+          <NewsletterSignup />
         </div>
 
-        <NewsletterSignup />
-
-        {/* Editorial Note */}
         <footer className="text-center py-12 border-t border-primary/10">
           <p className="font-script text-3xl text-secondary mb-6">
             {tFooter('with_love', { names: locale === 'en' ? 'Bruna & Vitoria' : 'Bruna & Vitória' })}

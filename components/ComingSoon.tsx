@@ -4,6 +4,7 @@ import { useTranslations, useLocale } from "next-intl";
 import NewsletterSignup from "./NewsletterSignup";
 import { Instagram } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from 'next/navigation';
 
 export default function ComingSoon() {
@@ -42,12 +43,18 @@ export default function ComingSoon() {
 
         {/* Brand Identity */}
         <div className="mb-10 animate-in fade-in duration-1000">
-          <h1 className="text-4xl md:text-6xl font-serif tracking-tight text-foreground/90">
-            Pencils <span className="font-script text-secondary italic font-light lowercase">&</span> Prayers
-          </h1>
+          <h1 className="sr-only">Pencils & Prayers</h1>
+          <Image
+            src="/logo-photoroom.png"
+            alt="Pencils & Prayers Logo"
+            width={260}
+            height={160}
+            priority
+            className="mx-auto"
+          />
           <div className="flex items-center justify-center gap-4 mt-4">
             <div className="h-[1px] w-6 bg-primary/20" />
-            <p className="text-[9px] uppercase tracking-[0.4em] text-primary/60 font-sans font-medium">
+            <p className="text-[12px] uppercase tracking-[0.4em] text-primary/60 font-sans font-medium">
               {tFooter('tagline')}
             </p>
             <div className="h-[1px] w-6 bg-primary/20" />

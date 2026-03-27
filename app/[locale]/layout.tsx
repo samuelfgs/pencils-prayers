@@ -37,7 +37,7 @@ export default async function RootLayout({
 }) {
   const { locale } = await params;
   const messages = await getMessages();
-  const isSiteEnabled = process.env.NEXT_PUBLIC_SITE_ENABLED === 'true';
+  const isSiteEnabled = true;
 
   return (
     <html lang={locale}>
