@@ -42,14 +42,7 @@ export default function Home() {
   const handleDownload = (href: string, assetKey: string) => {
     startTransition(async () => {
       await trackDownload(assetKey);
-
-      const link = document.createElement("a");
-      link.href = href;
-      link.download = "";
-      link.rel = "noopener";
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
+      window.open(href, "_blank", "noopener,noreferrer");
     });
   };
 
