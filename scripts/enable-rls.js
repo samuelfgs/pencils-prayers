@@ -9,9 +9,16 @@ async function enableRLS() {
   try {
     console.log("Enabling Row Level Security...");
 
-    const tables = ['profiles', 'posts', 'comments', 'likes', 'newsletter_subscriptions'];
+    const tableConfigs = [
+      { name: 'profiles', publicRead: true, publicInsert: false },
+      { name: 'posts', publicRead: true, publicInsert: false },
+      { name: 'comments', publicRead: true, publicInsert: true },
+      { name: 'likes', publicRead: true, publicInsert: true },
+      { name: 'newsletter_subscriptions', publicRead: false, publicInsert: true },
+      { name: 'downloads', publicRead: false, publicInsert: false },
+    ];
 
-    for (const table of tables) {
+    for (const { name: table, publicRead } of tableConfigs) {
       console.log(`Setting up RLS for ${table}...`);
       
       // Enable RLS
@@ -22,7 +29,7 @@ async function enableRLS() {
       await sql`DROP POLICY IF EXISTS "Public insert access" ON ${sql(table)};`;
       
       // 1. Basic Public Read Policy (not for newsletter_subscriptions)
-      if (table !== 'newsletter_subscriptions') {
+      if (publicRead) {
         await sql`
           CREATE POLICY "Public read access" 
           ON ${sql(table)} 
