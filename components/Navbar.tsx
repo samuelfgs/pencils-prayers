@@ -80,12 +80,6 @@ export default function Navbar() {
             {tNavbar('home')}
           </Link>
           <Link 
-            href={`/${locale}/about`} 
-            className={`transition-colors ${isActive(`/${locale}/about`) ? 'text-secondary' : 'hover:text-secondary'}`}
-          >
-            {tNavbar('about')}
-          </Link>
-          <Link 
             href={`/${locale}/contact`} 
             className={`transition-colors ${isActive(`/${locale}/contact`) ? 'text-secondary' : 'hover:text-secondary'}`}
           >
