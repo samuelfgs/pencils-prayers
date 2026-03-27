@@ -1,21 +1,23 @@
 'use client';
 
+import { trackDownload } from "@/app/actions/interactions";
 import Navbar from "@/components/Navbar";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import Image from "next/image";
 import { Download } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import { useTransition } from "react";
 
 const homeContent = {
   en: {
-    category: "Featured Download",
+    category: "Featured",
     title: "Easter Advent",
     intro:
       "A gentle collection created to help families walk toward Easter with intention. These pages invite you into daily reflection, simple rhythms, and Christ-centered moments that keep the hope of the resurrection close at hand.",
     buttons: [
-      { href: "/easter-advent.pdf", label: "Download Full PDF" },
-      { href: "/easter-advent-en.pdf", label: "Download English Version" },
-      { href: "/easter-advent-pt.pdf", label: "Download Portuguese Version" },
+      { href: "/easter-advent.pdf", label: "Download Full PDF", assetKey: "easter-advent" },
+      { href: "/easter-advent-en.pdf", label: "Download English Version", assetKey: "easter-advent-en" },
+      { href: "/easter-advent-pt.pdf", label: "Download Portuguese Version", assetKey: "easter-advent-pt" },
     ],
   },
   pt: {
@@ -24,9 +26,9 @@ const homeContent = {
     intro:
       "Uma coleção delicada para ajudar as famílias a caminharem até a Páscoa com intencionalidade. Estas páginas convidam você para reflexões diárias, ritmos simples e momentos centrados em Cristo, mantendo viva a esperança da ressurreição.",
     buttons: [
-      { href: "/easter-advent-en.pdf", label: "Baixar Versão em Inglês" },
-      { href: "/easter-advent-pt.pdf", label: "Baixar Versão em Português" },
-      { href: "/easter-advent.pdf", label: "Baixar PDF Completo" },
+      { href: "/easter-advent-en.pdf", label: "Baixar Versão em Inglês", assetKey: "easter-advent-en" },
+      { href: "/easter-advent-pt.pdf", label: "Baixar Versão em Português", assetKey: "easter-advent-pt" },
+      { href: "/easter-advent.pdf", label: "Baixar PDF Completo", assetKey: "easter-advent" },
     ],
   },
 } as const;
@@ -35,6 +37,21 @@ export default function Home() {
   const tFooter = useTranslations('Footer');
   const locale = useLocale() as keyof typeof homeContent;
   const content = homeContent[locale] ?? homeContent.en;
+  const [isPending, startTransition] = useTransition();
+
+  const handleDownload = (href: string, assetKey: string) => {
+    startTransition(async () => {
+      await trackDownload(assetKey);
+
+      const link = document.createElement("a");
+      link.href = href;
+      link.download = "";
+      link.rel = "noopener";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    });
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-[#FDFCFB] text-[#2C2C2C]">
@@ -70,15 +87,16 @@ export default function Home() {
 
               <div className="w-full flex flex-col gap-4 max-w-md mb-10">
                 {content.buttons.map((button) => (
-                  <a
+                  <button
                     key={button.href}
-                    href={button.href}
-                    download
+                    type="button"
+                    onClick={() => handleDownload(button.href, button.assetKey)}
+                    disabled={isPending}
                     className="inline-flex w-full items-center justify-center gap-3 rounded-full border border-secondary/20 bg-white px-6 py-3 text-[10px] uppercase tracking-[0.2em] font-bold text-secondary transition-all duration-300 hover:-translate-y-0.5 hover:border-secondary/40 hover:bg-secondary hover:text-white"
                   >
                     <Download className="h-4 w-4 shrink-0" />
-                    {button.label}
-                  </a>
+                    <span>{button.label}</span>
+                  </button>
                 ))}
               </div>
 

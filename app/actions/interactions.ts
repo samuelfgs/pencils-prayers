@@ -1,8 +1,8 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { comments, likes, posts, profiles } from "@/lib/db/schema";
-import { eq, and, desc } from "drizzle-orm";
+import { comments, downloads, likes, posts, profiles } from "@/lib/db/schema";
+import { eq, and, desc, sql } from "drizzle-orm";
 import { cookies, headers } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { v4 as uuidv4 } from "uuid";
@@ -218,6 +218,43 @@ export async function toggleLike(postSlug: string) {
       success: false,
       error:
         error instanceof Error ? error.message : "Failed to toggle like",
+    };
+  }
+}
+
+export async function getDownloadCount(assetKey: string) {
+  try {
+    const [result] = await db
+      .select({ count: sql<number>`count(*)::int` })
+      .from(downloads)
+      .where(eq(downloads.assetKey, assetKey));
+
+    return result?.count ?? 0;
+  } catch (error) {
+    console.error("[Graceful DB Fallback] Failed to fetch downloads:", error);
+    return 0;
+  }
+}
+
+export async function trackDownload(assetKey: string) {
+  try {
+    const { sessionId } = await getSessionData(true);
+
+    await db.insert(downloads).values({
+      assetKey,
+      sessionId,
+    });
+
+    return {
+      success: true,
+      downloads: await getDownloadCount(assetKey),
+    };
+  } catch (error) {
+    console.error("Failed to track download:", error);
+    return {
+      success: false,
+      error:
+        error instanceof Error ? error.message : "Failed to track download",
     };
   }
 }

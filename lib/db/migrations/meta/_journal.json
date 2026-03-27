@@ -15,6 +15,13 @@
       "when": 1774304846703,
       "tag": "0001_charming_network",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1774583629368,
+      "tag": "0002_aspiring_arclight",
+      "breakpoints": true
     }
   ]
 }

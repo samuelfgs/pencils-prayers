@@ -26,6 +26,11 @@ const dancingScript = Dancing_Script({
 export const metadata: Metadata = {
   title: "Pencils and Prayers | Homeschooling with Intent",
   description: "A space for creative expressions and spiritual reflections on motherhood and education.",
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default async function RootLayout({
