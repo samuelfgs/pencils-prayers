@@ -54,7 +54,7 @@ export default async function PostPage({
       "Em João 11:25-26, lemos: 'Disse-lhe Jesus: Eu sou a ressurreição e a vida; quem crê em mim, ainda que esteja morto, viverá; e todo aquele que vive, e crê em mim, nunca morrerá.'",
       "Creio que a Páscoa deve ser celebrada intencionalmente com nossas crianças. Romanos 3:23 afirma que 'todos pecaram e estão destituídos da glória de Deus'. 'Todos' inclui as crianças. E como elas crerão e entenderão se não ouvirem a respeito?",
       "Pensando nisso, criamos de forma resumida o material 'Semana Santa - Linha do Tempo'. Ele é bem simples e não tomará mais que 15 minutos do seu dia, mas certamente a palavra semeada terá um peso eterno.",
-      "Este advento compreende oito dias, do Domingo de Ramos ao Domingo de Páscoa. Cada dia traz um pequeno estudo e uma sugestão de atividade para fazer com os filhos ou com a família toda. Tenho certeza de que será um tempo precioso!"
+      "Este material compreende oito dias, do Domingo de Ramos ao Domingo de Páscoa. Cada dia traz um pequeno estudo e uma sugestão de atividade para fazer com os filhos ou com a família toda. Tenho certeza de que será um tempo precioso!"
     ],
     signOff: "No amor de Cristo,",
     verse: "\"Educa a criança no caminho em que deve andar; e até quando envelhecer não se desviará dele.\""

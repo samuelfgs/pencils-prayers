@@ -23,7 +23,7 @@ const homeContent = {
   },
   pt: {
     category: "Destaque",
-    title: "Easter Advent",
+    title: "Advento de Páscoa",
     intro:
       "Uma semana dedicada à esperança, ao aprendizado e à comunhão. Um tempo precioso para reunir a família e honrar o maior ato de amor e redenção da história: a entrega de Jesus por cada um de nós.",
     buttons: [
