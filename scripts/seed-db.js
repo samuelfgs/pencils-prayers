@@ -26,7 +26,7 @@ async function seed() {
       slug: "easter-2026",
       excerpt: "Focusing on the true meaning of the season with simple family traditions and creative activities that point back to Christ.",
       content: "Full content here...",
-      mainImageUrl: "/easter.png",
+      mainImageUrl: "/easter-advent.jpeg",
       publishedAt: new Date()
     }).onConflictDoNothing();
 

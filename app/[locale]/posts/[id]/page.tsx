@@ -60,7 +60,7 @@ export default async function PostPage({
         {/* Featured Image */}
         <div className="aspect-[16/9] overflow-hidden rounded-[3rem] mb-20 shadow-sm">
           <img
-            src="/easter.png"
+            src="/easter-advent.jpeg"
             alt={tPosts("easter_title")}
             className="object-cover w-full h-full"
           />

@@ -13,7 +13,7 @@ const homeContent = {
     category: "Featured",
     title: "Easter Advent",
     intro:
-      "A gentle collection created to help families walk toward Easter with intention. These pages invite you into daily reflection, simple rhythms, and Christ-centered moments that keep the hope of the resurrection close at hand.",
+      "A week dedicated to hope, learning, and communion. A precious time to gather the family and honor the greatest act of love and redemption in history: Jesus' sacrifice for each one of us.",
     buttons: [
       { href: "/easter-advent.pdf", label: "Download Full PDF", assetKey: "easter-advent" },
       { href: "/easter-advent-en.pdf", label: "Download English Version", assetKey: "easter-advent-en" },
@@ -24,7 +24,7 @@ const homeContent = {
     category: "Destaque",
     title: "Advento de Páscoa",
     intro:
-      "Uma coleção delicada para ajudar as famílias a caminharem até a Páscoa com intencionalidade. Estas páginas convidam você para reflexões diárias, ritmos simples e momentos centrados em Cristo, mantendo viva a esperança da ressurreição.",
+      "Uma semana dedicada à esperança, ao aprendizado e à comunhão. Um tempo precioso para reunir a família e honrar o maior ato de amor e redenção da história: a entrega de Jesus por cada um de nós.",
     buttons: [
       { href: "/easter-advent-en.pdf", label: "Baixar Versão em Inglês", assetKey: "easter-advent-en" },
       { href: "/easter-advent-pt.pdf", label: "Baixar Versão em Português", assetKey: "easter-advent-pt" },
@@ -72,7 +72,7 @@ export default function Home() {
 
             <div className="aspect-[16/10] overflow-hidden rounded-[2.5rem] mb-10 shadow-sm w-full">
               <Image
-                src="/easter.png"
+                src="/easter-advent.jpeg"
                 alt={content.title}
                 width={1200}
                 height={750}
