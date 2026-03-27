@@ -4,6 +4,7 @@ import { trackDownload } from "@/app/actions/interactions";
 import Navbar from "@/components/Navbar";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import Image from "next/image";
+import Link from "next/link";
 import { Download } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useTransition } from "react";
@@ -11,7 +12,7 @@ import { useTransition } from "react";
 const homeContent = {
   en: {
     category: "Featured",
-    title: "Easter Advent",
+    title: "Easter Advent: “Holy Week - Timeline”",
     intro:
       "A week dedicated to hope, learning, and communion. A precious time to gather the family and honor the greatest act of love and redemption in history: Jesus' sacrifice for each one of us.",
     buttons: [
@@ -22,7 +23,7 @@ const homeContent = {
   },
   pt: {
     category: "Destaque",
-    title: "Advento de Páscoa",
+    title: "Advento de Páscoa: “Semana Santa - Linha do tempo”",
     intro:
       "Uma semana dedicada à esperança, ao aprendizado e à comunhão. Um tempo precioso para reunir a família e honrar o maior ato de amor e redenção da história: a entrega de Jesus por cada um de nós.",
     buttons: [
@@ -35,6 +36,7 @@ const homeContent = {
 
 export default function Home() {
   const tFooter = useTranslations('Footer');
+  const tPosts = useTranslations('Posts');
   const locale = useLocale() as keyof typeof homeContent;
   const content = homeContent[locale] ?? homeContent.en;
   const [isPending, startTransition] = useTransition();
@@ -65,7 +67,7 @@ export default function Home() {
 
             <div className="aspect-[16/10] overflow-hidden rounded-[2.5rem] mb-10 shadow-sm w-full">
               <Image
-                src="/easter-advent.jpeg"
+                src="/easter-timeline-cover.jpeg"
                 alt={content.title}
                 width={1200}
                 height={750}
@@ -77,6 +79,13 @@ export default function Home() {
               <p className="text-lg text-muted-foreground leading-relaxed font-sans mb-10 italic max-w-xl">
                 {content.intro}
               </p>
+
+              <Link
+                href={`/${locale}/posts/easter-2026`}
+                className="inline-flex items-center justify-center rounded-full border border-secondary/20 bg-secondary px-6 py-3 text-[10px] uppercase tracking-[0.2em] font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-secondary/40 hover:bg-secondary/90 mb-10"
+              >
+                {tPosts('read_more')}
+              </Link>
 
               <div className="w-full flex flex-col gap-4 max-w-md mb-10">
                 {content.buttons.map((button) => (
