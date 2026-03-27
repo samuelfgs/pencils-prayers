@@ -121,4 +121,3 @@ p, span, div, button, input, textarea {
   content: "";
   @apply absolute inset-0 border border-primary/20 pointer-events-none m-2 rounded-lg;
 }
-

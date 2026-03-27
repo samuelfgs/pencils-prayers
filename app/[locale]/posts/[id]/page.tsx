@@ -84,7 +84,7 @@ export default async function PostPage({
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-serif leading-[1.1] mb-10 max-w-2xl mx-auto tracking-tight">
+          <h1 className="text-6xl md:text-8xl font-script leading-[0.95] mb-10 max-w-2xl mx-auto text-secondary">
             {tPosts("easter_title")}
           </h1>
 

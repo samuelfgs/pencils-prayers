@@ -12,7 +12,7 @@ import { useTransition } from "react";
 const homeContent = {
   en: {
     category: "Featured",
-    title: "Easter Advent: “Holy Week - Timeline”",
+    title: "Easter Advent",
     intro:
       "A week dedicated to hope, learning, and communion. A precious time to gather the family and honor the greatest act of love and redemption in history: Jesus' sacrifice for each one of us.",
     buttons: [
@@ -23,7 +23,7 @@ const homeContent = {
   },
   pt: {
     category: "Destaque",
-    title: "Advento de Páscoa: “Semana Santa - Linha do tempo”",
+    title: "Easter Advent",
     intro:
       "Uma semana dedicada à esperança, ao aprendizado e à comunhão. Um tempo precioso para reunir a família e honrar o maior ato de amor e redenção da história: a entrega de Jesus por cada um de nós.",
     buttons: [
@@ -61,7 +61,7 @@ export default function Home() {
               </span>
             </div>
 
-            <h1 className="text-3xl md:text-5xl font-serif leading-tight mb-8 max-w-xl">
+            <h1 className="text-5xl md:text-7xl font-script leading-[0.95] mb-8 max-w-xl text-secondary">
               {content.title}
             </h1>
 
