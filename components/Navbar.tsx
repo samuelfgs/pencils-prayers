@@ -27,7 +27,7 @@ export default function Navbar() {
 
   return (
     <header className="w-full pt-6 pb-6 bg-[#FDFCFB]">
-      <div className="max-w-4xl mx-auto px-6 flex flex-col items-center">
+      <div className="max-w-6xl mx-auto px-6 md:px-8 flex flex-col items-center">
         {/* Brand Identity */}
         <div className="relative w-full mb-8">
           <div className="text-center group">

@@ -75,7 +75,7 @@ export default async function PostPage({
     <div className="flex flex-col min-h-screen bg-[#FDFCFB] text-[#2C2C2C]">
       <Navbar />
 
-      <main className="flex-1 w-full max-w-3xl mx-auto px-6 py-16 md:py-24">
+      <main className="flex-1 w-full max-w-5xl mx-auto px-6 py-16 md:px-8 md:py-24">
         {/* Article Header */}
         <header className="text-center mb-16">
           <div className="flex items-center justify-center gap-4 mb-8">
@@ -111,7 +111,7 @@ export default async function PostPage({
         </div>
 
         {/* Article Content */}
-        <article className="max-w-2xl mx-auto">
+        <article className="max-w-3xl mx-auto">
           <div className="prose prose-lg md:prose-xl font-serif leading-relaxed text-[#2C2C2C] space-y-10 prose-p:text-foreground/90 prose-headings:font-serif prose-headings:text-foreground/90">
             <p className="first-letter:text-8xl first-letter:font-serif first-letter:float-left first-letter:mr-4 first-letter:mt-2 first-letter:text-secondary">
               {content.paragraphs[0]}
@@ -193,10 +193,12 @@ export default async function PostPage({
           </Suspense>
         </article>
 
-        <NewsletterSignup />
+        <div className="mt-20 pt-16 border-t border-primary/10">
+          <NewsletterSignup />
+        </div>
 
         {/* Editorial Note */}
-        <footer className="text-center py-12 border-t border-primary/10">
+        <footer className="mt-16 border-t border-primary/10 pt-12 pb-12 text-center">
           <p className="font-script text-3xl text-secondary mb-6">
             {content.signOff}<br />
             {locale === "en" ? "Bruna & Vitoria" : "Bruna & Vitória"}

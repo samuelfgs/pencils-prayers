@@ -12,7 +12,7 @@ export default function Contact() {
     <div className="flex flex-col min-h-screen bg-[#FDFCFB] text-[#2C2C2C]">
       <Navbar />
       
-      <main className="flex-1 w-full max-w-3xl mx-auto px-6 py-12 md:py-20">
+      <main className="flex-1 w-full max-w-5xl mx-auto px-6 py-12 md:px-8 md:py-20">
         <header className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl font-serif text-foreground/90 mb-8 tracking-tight">{t('title')}</h1>
           <p className="text-muted-foreground leading-relaxed text-sm max-w-md mx-auto font-sans italic">

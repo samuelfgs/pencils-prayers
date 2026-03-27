@@ -52,8 +52,8 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-[#FDFCFB] text-[#2C2C2C]">
       <Navbar />
 
-      <main className="flex-1 w-full max-w-2xl mx-auto px-6 py-12">
-        <article className="group animate-in fade-in slide-in-from-bottom-4 duration-1000">
+      <main className="flex-1 w-full max-w-6xl mx-auto px-6 py-12 md:px-8">
+        <article className="group max-w-5xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-1000">
           <div className="flex flex-col items-center text-center">
             <div className="flex items-center gap-4 mb-6">
               <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-secondary bg-secondary/10 px-3 py-1 rounded-full">

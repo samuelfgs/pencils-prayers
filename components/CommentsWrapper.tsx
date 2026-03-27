@@ -15,41 +15,58 @@ export async function CommentsWrapper({ postId, currentSessionId }: { postId: st
 
 export function CommentsSkeleton() {
   return (
-    <section className="mt-20 pt-16 border-t border-primary/10 animate-pulse">
-      <div className="h-8 w-64 bg-primary/10 rounded-full mb-12" />
-      
-      {/* Form Skeleton */}
-      <div className="mb-16 space-y-6">
-        <div className="space-y-2">
-          <div className="h-3 w-20 bg-primary/10 rounded-full" />
-          <div className="h-12 w-full md:w-1/2 bg-primary/5 rounded-full" />
+    <section className="mt-10 animate-pulse border-t border-primary/10 pt-10">
+      <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div className="space-y-3">
+          <div className="h-3 w-24 rounded-full bg-primary/10" />
+          <div className="h-8 w-64 rounded-full bg-primary/10" />
+          <div className="h-4 w-80 max-w-full rounded-full bg-primary/5" />
         </div>
-        <div className="space-y-2">
-          <div className="h-3 w-20 bg-primary/10 rounded-full" />
-          <div className="h-32 w-full bg-primary/5 rounded-[2rem]" />
-        </div>
-        <div className="flex justify-end">
-          <div className="h-12 w-40 bg-primary/10 rounded-full" />
-        </div>
+        <div className="h-9 w-28 rounded-full bg-primary/10" />
       </div>
 
-      {/* Comment List Skeleton */}
-      <div className="space-y-12">
-        {[1, 2].map((i) => (
-          <div key={i} className="flex gap-6">
-            <div className="w-12 h-12 rounded-full bg-primary/10 flex-shrink-0" />
-            <div className="flex-1 space-y-4 py-1">
-              <div className="flex items-center gap-3">
-                <div className="h-4 w-32 bg-primary/10 rounded-full" />
-                <div className="h-3 w-16 bg-primary/5 rounded-full" />
+      <div className="space-y-8">
+        <div className="rounded-[2rem] border border-primary/10 bg-white/55 p-6 shadow-sm md:p-8">
+          <div className="space-y-6">
+            <div className="flex flex-col gap-5">
+              <div className="space-y-2">
+                <div className="h-3 w-20 rounded-full bg-primary/10" />
+                <div className="h-12 w-full md:max-w-sm rounded-full bg-primary/5" />
               </div>
               <div className="space-y-2">
-                <div className="h-3 bg-primary/5 rounded-full w-full" />
-                <div className="h-3 bg-primary/5 rounded-full w-5/6" />
+                <div className="h-3 w-20 rounded-full bg-primary/10" />
+                <div className="h-40 w-full rounded-[1.75rem] bg-primary/5" />
               </div>
             </div>
+            <div className="flex items-center justify-between gap-4">
+              <div className="h-4 w-48 rounded-full bg-primary/5" />
+              <div className="h-12 w-40 rounded-full bg-primary/10" />
+            </div>
           </div>
-        ))}
+        </div>
+
+        <div className="rounded-[2rem] border border-primary/10 bg-white/35 p-6 md:p-8">
+          <div className="space-y-6">
+            {[1, 2].map((i) => (
+              <div
+                key={i}
+                className="flex gap-4 rounded-[1.5rem] border border-primary/8 bg-white/80 p-5"
+              >
+                <div className="h-12 w-12 flex-shrink-0 rounded-full bg-primary/10" />
+                <div className="flex-1 space-y-3 py-1">
+                  <div className="flex items-center gap-3">
+                    <div className="h-4 w-32 rounded-full bg-primary/10" />
+                    <div className="h-3 w-16 rounded-full bg-primary/5" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="h-3 w-full rounded-full bg-primary/5" />
+                    <div className="h-3 w-5/6 rounded-full bg-primary/5" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

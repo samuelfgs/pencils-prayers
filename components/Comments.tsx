@@ -108,126 +108,148 @@ export default function Comments({
   };
 
   return (
-    <section className="mt-20 pt-16">
-      <h3 className="text-3xl font-serif mb-12 text-foreground/90">
-        {locale === "en" ? "Join the Conversation" : "Junte-se à Conversa"}
-      </h3>
-
-      <form onSubmit={handleSubmit} className="mb-16">
-        <div className="flex flex-col gap-6">
-          {error && (
-            <div className="bg-red-50 border border-red-100 text-red-600 px-6 py-4 rounded-full text-xs font-bold uppercase tracking-widest animate-in fade-in zoom-in-95 duration-300">
-              {error}
-            </div>
-          )}
-
-          <div className="flex flex-col gap-2">
-            <label
-              htmlFor="name"
-              className="text-[10px] uppercase tracking-[0.2em] font-bold text-muted-foreground/60 ml-2"
-            >
-              {locale === "en" ? "Your Name" : "Seu Nome"}
-            </label>
-            <input
-              id="name"
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder={locale === "en" ? "Jane Doe" : "Maria Silva"}
-              className="w-full md:w-1/2 px-6 py-4 bg-white/50 border border-primary/10 rounded-full focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 font-sans transition-all placeholder:text-muted-foreground/40"
-              required
-            />
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <label
-              htmlFor="comment"
-              className="text-[10px] uppercase tracking-[0.2em] font-bold text-muted-foreground/60 ml-2"
-            >
-              {locale === "en" ? "Comment" : "Comentário"}
-            </label>
-            <textarea
-              id="comment"
-              rows={3}
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              placeholder={
-                locale === "en"
-                  ? "Share your thoughts or how you celebrate..."
-                  : "Compartilhe seus pensamentos ou como você celebra..."
-              }
-              className="w-full px-6 py-4 bg-white/50 border border-primary/10 rounded-[2rem] focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/5 font-sans transition-all resize-none placeholder:text-muted-foreground/40 leading-relaxed"
-              required
-            />
-          </div>
-
-          <div className="flex justify-end">
-            <Button
-              type="submit"
-              disabled={isPosting}
-              className="rounded-full bg-[#2C2C2C] hover:bg-[#4A4A4A] text-white px-8 py-6 h-auto transition-all disabled:opacity-50"
-            >
-              {isPosting
-                ? locale === "en"
-                  ? "Posting..."
-                  : "Publicando..."
-                : locale === "en"
-                  ? "Post Comment"
-                  : "Publicar Comentário"}
-            </Button>
+    <section className="mt-10 border-t border-primary/10 pt-10">
+      <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div className="space-y-3">
+          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-muted-foreground/55">
+            {locale === "en" ? "Comments" : "Comentários"}
+          </p>
+          <div className="space-y-2">
+            <h3 className="text-3xl font-serif text-foreground/90">
+              {locale === "en" ? "Join the Conversation" : "Junte-se à Conversa"}
+            </h3>
+            <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
+              {locale === "en"
+                ? "Share a memory, a reflection, or the way your family marks this season."
+                : "Compartilhe uma lembrança, uma reflexão ou como sua família vive este tempo."}
+            </p>
           </div>
         </div>
-      </form>
 
-      <div className="space-y-12">
-        {comments.length === 0 ? (
-          <p className="text-muted-foreground italic font-serif">
-            {locale === "en"
-              ? "Be the first to share your thoughts."
-              : "Seja o primeiro a compartilhar seus pensamentos."}
-          </p>
-        ) : (
-          comments.map((comment) => (
-            <div
-              key={comment.id}
-              className="flex gap-6 animate-in fade-in slide-in-from-bottom-2 duration-500 group relative"
-            >
-              <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0 text-secondary font-serif text-xl uppercase">
-                {comment.guestName.charAt(0)}
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="font-bold text-sm text-foreground/90">
-                    {comment.guestName}
-                  </span>
-                  <span className="text-[10px] uppercase tracking-widest text-muted-foreground/40">
-                    {new Date(comment.createdAt).toLocaleDateString(
-                      locale === "en" ? "en-US" : "pt-BR",
-                      { month: "short", day: "numeric" }
-                    )}
-                  </span>
+        <div className="inline-flex items-center gap-3 self-start rounded-full border border-primary/10 bg-white/70 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.24em] text-muted-foreground/60">
+          <span className="h-2 w-2 rounded-full bg-secondary/60" />
+          <span>
+            {comments.length} {locale === "en" ? (comments.length === 1 ? "Comment" : "Comments") : comments.length === 1 ? "Comentário" : "Comentários"}
+          </span>
+        </div>
+      </div>
+
+      <div className="space-y-8">
+        <div className="rounded-[2rem] border border-primary/10 bg-white/55 p-6 shadow-sm md:p-8">
+          <form onSubmit={handleSubmit}>
+            <div className="flex flex-col gap-6">
+              {error && (
+                <div className="rounded-[1.5rem] border border-red-100 bg-red-50 px-5 py-4 text-xs font-bold uppercase tracking-widest text-red-600 animate-in fade-in zoom-in-95 duration-300">
+                  {error}
                 </div>
-                <p className="text-muted-foreground leading-relaxed text-sm whitespace-pre-wrap">
-                  {comment.content}
-                </p>
+              )}
+
+              <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="name"
+                    className="ml-2 text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground/60"
+                  >
+                    {locale === "en" ? "Your Name" : "Seu Nome"}
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder={locale === "en" ? "Jane Doe" : "Maria Silva"}
+                    className="w-full md:max-w-sm rounded-full border border-primary/10 bg-white px-6 py-4 font-sans transition-all placeholder:text-muted-foreground/40 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/5"
+                    required
+                  />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="comment"
+                    className="ml-2 text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground/60"
+                  >
+                    {locale === "en" ? "Comment" : "Comentário"}
+                  </label>
+                  <textarea
+                    id="comment"
+                    rows={4}
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                    placeholder={
+                      locale === "en"
+                        ? "Share your thoughts or how you celebrate..."
+                        : "Compartilhe seus pensamentos ou como você celebra..."
+                    }
+                    className="min-h-[152px] w-full resize-none rounded-[1.75rem] border border-primary/10 bg-white px-6 py-5 font-sans leading-relaxed transition-all placeholder:text-muted-foreground/40 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/5"
+                    required
+                  />
+                </div>
               </div>
 
-              {/* Delete Button (Only shows if session matches) */}
-              {comment.sessionId && currentSessionId === comment.sessionId && (
-                <button
-                  onClick={() => handleDelete(comment.id, comment.sessionId!)}
-                  className="absolute top-0 right-0 p-2 text-muted-foreground/30 hover:text-red-500 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
-                  title={
-                    locale === "en"
-                      ? "Delete your comment"
-                      : "Excluir seu comentário"
-                  }
+              <div className="flex justify-end">
+                <Button
+                  type="submit"
+                  disabled={isPosting || isPending}
+                  className="h-auto rounded-full bg-[#2C2C2C] px-8 py-4 text-white transition-all hover:bg-[#4A4A4A] disabled:opacity-50"
                 >
-                  <Trash2 className="w-4 h-4" />
-                </button>
-              )}
+                  {isPosting || isPending
+                    ? locale === "en"
+                      ? "Posting..."
+                      : "Publicando..."
+                    : locale === "en"
+                      ? "Post Comment"
+                      : "Publicar Comentário"}
+                </Button>
+              </div>
             </div>
-          ))
+          </form>
+        </div>
+
+        {comments.length > 0 && (
+          <div className="rounded-[2rem] border border-primary/10 bg-white/35 p-6 md:p-8">
+            <div className="space-y-6">
+              {comments.map((comment) => (
+                <div
+                  key={comment.id}
+                  className="group relative flex gap-4 rounded-[1.5rem] border border-primary/8 bg-white/80 p-5 animate-in fade-in slide-in-from-bottom-2 duration-500"
+                >
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-secondary/10 font-serif text-xl uppercase text-secondary">
+                    {comment.guestName.charAt(0)}
+                  </div>
+                  <div className="min-w-0 flex-1 pr-8">
+                    <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+                      <span className="text-sm font-bold text-foreground/90">
+                        {comment.guestName}
+                      </span>
+                      <span className="text-[10px] uppercase tracking-widest text-muted-foreground/40">
+                        {new Date(comment.createdAt).toLocaleDateString(
+                          locale === "en" ? "en-US" : "pt-BR",
+                          { month: "short", day: "numeric" }
+                        )}
+                      </span>
+                    </div>
+                    <p className="whitespace-pre-wrap text-sm leading-relaxed text-muted-foreground">
+                      {comment.content}
+                    </p>
+                  </div>
+
+                  {comment.sessionId && currentSessionId === comment.sessionId && (
+                    <button
+                      onClick={() => handleDelete(comment.id, comment.sessionId!)}
+                      className="absolute right-4 top-4 p-2 text-muted-foreground/30 transition-colors hover:text-red-500 focus:opacity-100 md:opacity-0 md:group-hover:opacity-100"
+                      title={
+                        locale === "en"
+                          ? "Delete your comment"
+                          : "Excluir seu comentário"
+                      }
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </button>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
         )}
       </div>
     </section>
