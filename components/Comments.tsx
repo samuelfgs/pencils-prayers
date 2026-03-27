@@ -108,7 +108,7 @@ export default function Comments({
   };
 
   return (
-    <section className="mt-20 pt-16 border-t border-primary/10">
+    <section className="mt-20 pt-16">
       <h3 className="text-3xl font-serif mb-12 text-foreground/90">
         {locale === "en" ? "Join the Conversation" : "Junte-se à Conversa"}
       </h3>
